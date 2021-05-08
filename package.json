@@ -11,8 +11,8 @@
     "type": "git",
     "url": "https://github.com/storybookjs/storybook-addon-kit"
   },
-  "author": "winkerVSbecks",
   "license": "MIT",
+  "author": "winkerVSbecks",
   "main": "dist/preset",
   "files": [
     "dist/**/*",
@@ -20,20 +20,23 @@
     "*.js"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "babel ./src --out-dir ./dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "start": "concurrently \"npm run storybook -- --no-manager-cache --quiet\" \"npm run build -- --watch\"",
+    "buildBabel": "babel ./src --out-dir ./dist --extensions \".js,.jsx,.ts,.tsx\"",
+    "buildTsc": "tsc --declaration --emitDeclarationOnly --outDir ./dist",
+    "build": "yarn buildBabel && yarn buildTsc",
     "build-storybook": "build-storybook",
+    "clean": "rimraf ./dist",
     "prerelease": "node check-metadata.js",
-    "release": "npm run build && auto shipit"
+    "release": "yarn build && auto shipit",
+    "start": "concurrently \"yarn storybook --no-manager-cache --quiet\" \"yarn build --watch\"",
+    "storybook": "start-storybook -p 6006",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "@babel/preset-typescript": "^7.13.0",
     "@storybook/react": "^6.1.14",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
@@ -41,7 +44,8 @@
     "concurrently": "^5.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.4"
   },
   "peerDependencies": {
     "@storybook/addons": "^6.1.14",
