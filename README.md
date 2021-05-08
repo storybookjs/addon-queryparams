@@ -14,31 +14,31 @@ Register it by adding it in the addons attribute in your `main.js` file (create 
 
 ```js
 module.exports = {
-  addons: ['@storybook/addon-queryparams'],
+  addons: ["@storybook/addon-queryparams"],
 };
 ```
 
 In your story, add the `withQuery` decorator and define the query parameters you want to mock:
 
 ```js
-import React from 'react';
-import { Button } from '@storybook/react/demo';
-import { withQuery } from '@storybook/addon-queryparams';
+import React from "react";
+import { Button } from "@storybook/react/demo";
+import { withQuery } from "@storybook/addon-queryparams";
 
 export default {
-  title: 'Button',
+  title: "Button",
   component: Button,
   decorators: [withQuery],
   parameters: {
     query: {
-      mock: 'Hello world!',
+      mock: "Hello world!",
     },
   },
 };
 
 export const WithMockedSearch = () => {
   const urlParams = new URLSearchParams(document.location.search);
-  const mockedParam = urlParams.get('mock');
+  const mockedParam = urlParams.get("mock");
   return <div>Mocked value: {mockedParam}</div>;
 };
 ```
@@ -47,20 +47,40 @@ export const WithMockedSearch = () => {
   <summary>Example with storiesOf API</summary>
 
 ```js
-import React from 'react';
-import { storiesOf } from '@storybook/react';
+import React from "react";
+import { storiesOf } from "@storybook/react";
 
-storiesOf('button', module)
+storiesOf("button", module)
   .addParameters({
     query: {
-      mock: 'Hello World!',
+      mock: "Hello World!",
     },
   })
-  .add('Prints the mocked parameter', () => {
+  .add("Prints the mocked parameter", () => {
     const urlParams = new URLSearchParams(document.location.search);
-    const mockedParam = urlParams.get('mock');
+    const mockedParam = urlParams.get("mock");
     return <div>Mocked value: {mockedParam}</div>;
   });
 ```
 
 </details>
+
+## Credits
+
+While this addon was part of the [Storybook monorepo](https://github.com/storybookjs/storybook), it received commits from the following authors:
+
+> Andrew Lisowski,
+> Brody McKee,
+> Clément DUNGLER,
+> Filipp Riabchun,
+> Gaëtan Maisse,
+> Gert Hengeveld,
+> Jon Palmer,
+> Lynn Chyi,
+> Michael Shilman,
+> Norbert de Langen,
+> Paul Rosania,
+> Renovate Bot,
+> Tom Coleman,
+> Varun Vachhar,
+> Yann Braga
