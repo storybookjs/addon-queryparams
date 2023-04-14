@@ -1,6 +1,6 @@
 module.exports = {
-  stories: ["../stories/**/*.stories.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["../preset.js", "@storybook/addon-mdx-gfm"],
+  stories: ["../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: [],
   framework: {
     name: "@storybook/react-webpack5",
     options: {}
