@@ -9,7 +9,6 @@ export const withQueryDecorator = makeDecorator({
   wrapper: (getStory, context, { parameters }) => {
     const { location } = document
     const currentQuery = qs.parse(location.search, { ignoreQueryPrefix: true })
-    debugger
     if (parameters) {
       const additionalQuery =
         typeof parameters === 'string'
