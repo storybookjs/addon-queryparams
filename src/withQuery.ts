@@ -1,25 +1,25 @@
-import { makeDecorator } from '@storybook/preview-api'
-import { PARAM_KEY } from './constants'
-import qs from 'qs'
+import { makeDecorator } from '@storybook/preview-api';
+import { PARAM_KEY } from './constants';
+import qs from 'qs';
 
 export const withQueryDecorator = makeDecorator({
   name: 'withQuery',
   parameterName: PARAM_KEY,
   skipIfNoParametersOrOptions: true,
   wrapper: (getStory, context, { parameters }) => {
-    const { location } = document
-    const currentQuery = qs.parse(location.search, { ignoreQueryPrefix: true })
+    const { location } = document;
+    const currentQuery = qs.parse(location.search, { ignoreQueryPrefix: true });
     if (parameters) {
       const additionalQuery =
         typeof parameters === 'string'
           ? qs.parse(parameters, { ignoreQueryPrefix: true })
-          : parameters
+          : parameters;
 
-      const newLocation = new URL(document.location.href)
-      newLocation.search = qs.stringify({ ...currentQuery, ...additionalQuery })
+      const newLocation = new URL(document.location.href);
+      newLocation.search = qs.stringify({ ...currentQuery, ...additionalQuery });
 
-      history.replaceState({}, document.title, newLocation.toString())
+      history.replaceState({}, document.title, newLocation.toString());
     }
-    return getStory(context)
+    return getStory(context);
   }
-})
+});
