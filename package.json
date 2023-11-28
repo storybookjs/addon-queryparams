@@ -23,12 +23,12 @@
     "buildBabel": "babel ./src --out-dir ./dist --extensions \".js,.jsx,.ts,.tsx\"",
     "buildTsc": "tsc --declaration --emitDeclarationOnly --outDir ./dist",
     "build": "yarn buildBabel && yarn buildTsc",
-    "build-storybook": "build-storybook",
+    "build-storybook": "storybook build",
     "clean": "rimraf ./dist",
     "prerelease": "node check-metadata.js",
     "release": "yarn build && auto shipit",
     "start": "concurrently \"yarn storybook --no-manager-cache --quiet\" \"yarn build --watch\"",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "storybook dev -p 6006",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/react": "^6.1.14",
+    "@storybook/react": "^7.6.0",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "chalk": "^2.4.2",
@@ -45,16 +45,17 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
+    "storybook": "^7.6.0",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
-    "@storybook/addons": "^6.1.14",
-    "@storybook/api": "^6.1.14",
-    "@storybook/components": "^6.1.14",
-    "@storybook/core-events": "^6.1.14",
-    "@storybook/theming": "^6.1.14",
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "@storybook/addons": "^7.6.0",
+    "@storybook/api": "^7.6.0",
+    "@storybook/components": "^7.6.0",
+    "@storybook/core-events": "^7.6.0",
+    "@storybook/theming": "^7.6.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -69,7 +70,7 @@
   },
   "storybook": {
     "displayName": "Addon Kit",
-    "supportedFrameworks": [
+    "renderer": [
       "react",
       "vue",
       "angular"
