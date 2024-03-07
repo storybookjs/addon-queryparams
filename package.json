@@ -36,7 +36,6 @@
     "*.d.ts"
   ],
   "scripts": {
-    "prebuild": "npm run clean",
     "build": "tsup",
     "build-storybook": "storybook build",
     "build:watch": "npm run build -- --watch",
