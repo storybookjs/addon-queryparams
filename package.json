@@ -41,7 +41,8 @@
     "build:watch": "npm run build -- --watch",
     "release": "npm run build && auto shipit",
     "start": "run-p build:watch 'storybook --quiet'",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "calculate-version": "auto version"
   },
   "devDependencies": {
     "@storybook/manager": "^8.0.0-rc.2",
