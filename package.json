@@ -1,5 +1,5 @@
 {
-  "name": "storybook-addon-queryparams",
+  "name": "@storybook/addon-queryparams",
   "version": "7.0.0",
   "description": "addon to mock queryparams in storybook",
   "keywords": [
