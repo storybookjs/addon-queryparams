@@ -1,78 +1,100 @@
 {
-  "name": "storybook-addon-kit",
-  "version": "0.0.0",
-  "description": "everything you need to build a Storybook addon",
+  "name": "@storybook/addon-queryparams",
+  "version": "7.0.0",
+  "description": "addon to mock queryparams in storybook",
   "keywords": [
     "storybook-addons",
-    "style",
-    "test"
+    "queryparams"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/storybook-addon-kit"
+    "url": "https://github.com/storybookjs/addon-queryparams"
   },
   "license": "MIT",
-  "author": "winkerVSbecks",
-  "main": "dist/preset",
+  "author": "storybook-addon-queryparams",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./preview": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/preview.js",
+      "require": "./dist/preview.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*",
     "README.md",
-    "*.js"
+    "*.js",
+    "*.d.ts"
   ],
   "scripts": {
-    "buildBabel": "babel ./src --out-dir ./dist --extensions \".js,.jsx,.ts,.tsx\"",
-    "buildTsc": "tsc --declaration --emitDeclarationOnly --outDir ./dist",
-    "build": "yarn buildBabel && yarn buildTsc",
-    "build-storybook": "build-storybook",
-    "clean": "rimraf ./dist",
-    "prerelease": "node check-metadata.js",
-    "release": "yarn build && auto shipit",
-    "start": "concurrently \"yarn storybook --no-manager-cache --quiet\" \"yarn build --watch\"",
-    "storybook": "start-storybook -p 6006",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup",
+    "build-storybook": "storybook build",
+    "build:watch": "npm run build -- --watch",
+    "release": "npm run build && auto shipit",
+    "start": "run-p build:watch 'storybook --quiet'",
+    "storybook": "storybook dev -p 6006"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.5",
-    "@babel/preset-typescript": "^7.13.0",
-    "@storybook/react": "^6.1.14",
-    "auto": "^10.3.0",
-    "babel-loader": "^8.1.0",
-    "chalk": "^2.4.2",
-    "concurrently": "^5.3.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.2.4"
+    "@storybook/manager": "^8.0.0-rc.2",
+    "@storybook/manager-api": "^8.0.0-rc.2",
+    "@storybook/preview": "^8.0.0-rc.2",
+    "@storybook/preview-api": "^8.0.0-rc.2",
+    "@storybook/react": "^8.0.0-rc.2",
+    "@storybook/react-vite": "^8.0.0-rc.2",
+    "@types/node": "^18.15.0",
+    "@types/react": "^18.0.34",
+    "@vitejs/plugin-react": "^4.2.1",
+    "auto": "^11.1.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "storybook": "^8.0.0-rc.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.5"
   },
   "peerDependencies": {
-    "@storybook/addons": "^6.1.14",
-    "@storybook/api": "^6.1.14",
-    "@storybook/components": "^6.1.14",
-    "@storybook/core-events": "^6.1.14",
-    "@storybook/theming": "^6.1.14",
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
+    "@storybook/manager-api": "^7.0.0 || ^8.0.0 || ^8.0.0-rc.0",
+    "@storybook/preview-api": "^7.0.0 || ^8.0.0 || ^8.0.0-rc.0"
   },
   "publishConfig": {
     "access": "public"
   },
+  "auto": {
+    "plugins": [
+      "npm"
+    ]
+  },
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "previewEntries": [
+      "src/preview.ts"
+    ]
+  },
   "storybook": {
-    "displayName": "Addon Kit",
+    "displayName": "storybook-addon-queryparams",
     "supportedFrameworks": [
       "react",
       "vue",
-      "angular"
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   }
