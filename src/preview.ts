@@ -1,5 +1,5 @@
-import type { DecoratorFunction } from "@storybook/types";
-import { useParameter } from "@storybook/preview-api";
+import type { DecoratorFunction } from "storybook/internal/types";
+import { useParameter } from "storybook/preview-api";
 
 import { PARAM_KEY } from "./constants";
 
