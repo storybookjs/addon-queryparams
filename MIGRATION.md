@@ -1,7 +1,16 @@
 <h1>Migration</h1>
 
+- [From version 8.x to 9.0.0](#from-version-8x-to-900)
+  - [Support storybook 9.x](#support-storybook-9x)
 - [From version 7.x to 8.0.0](#from-version-7x-to-800)
   - [`withQuery` decorator removed](#withquery-decorator-removed)
+
+## From version 8.x to 9.0.0
+
+### Support storybook 9.x
+
+Storybook v9 is now supported.
+However, due to changes in the internal package, it is not available for versions earlier than v9.
 
 ## From version 7.x to 8.0.0
 
