@@ -1,3 +1,15 @@
+# v7.0.2 (Wed Sep 03 2025)
+
+#### 🐛 Bug Fix
+
+- feat: Support storybook v9 and React 18/19 [#14](https://github.com/storybookjs/addon-queryparams/pull/14) ([@Sidnioulz](https://github.com/Sidnioulz))
+
+#### Authors: 1
+
+- Steve Dodier-Lazaro ([@Sidnioulz](https://github.com/Sidnioulz))
+
+---
+
 # v7.0.1 (Wed Mar 13 2024)
 
 #### 🐛 Bug Fix
